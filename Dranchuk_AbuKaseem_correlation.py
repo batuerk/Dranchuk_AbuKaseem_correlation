@@ -44,7 +44,7 @@ def f_rho_prime(rho_r, T_r, A):
     term5 = A[10] * (rho_r**2 / T_r**3) * (3 + A[11]*rho_r**2*(3 - 2*A[11]*rho_r**2)) * math.exp(-A[11]*rho_r**2)
     return term1 + term2 + term3 + term4 + term5
 
-pressures = range(15, 6000, 400)
+pressures = range(15, 6000, 1)
 z_values = []
 
 for P in pressures:
@@ -67,13 +67,10 @@ for P in pressures:
     z = (zc * Ppr) / (rho_r * Tpr)
     z_values.append(z)
 
-for i in z_values:
-    print(i)
-
 
 plt.figure(figsize=(8,6))
 plt.plot(pressures, z_values, color='b', linewidth=2)
-plt.title("Dranchuk-AbuKassem Korelasyonu ile Z-Faktörü")
+plt.title("Dranchuk-AbuKassem Correlation")
 plt.xlabel("Pressure (psia)")
 plt.ylabel("Z-Factor")
 plt.grid(True)
